@@ -1,0 +1,24 @@
+#!/usr/bin/make -f
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/ant.mk
+
+export DESTDIR=debian/libdumbster-java
+
+# Add here any variable or target overrides you need.
+
+# Set either a single (JAVA_HOME) or multiple (JAVA_HOME_DIRS) java locations
+JAVA_HOME = /usr/lib/jvm/default-java/
+
+DEB_JARS := /usr/share/java/ant-junit.jar
+
+# override build and clean target
+DEB_ANT_BUILD_TARGET = compile 
+DEB_ANT_CLEAN_TARGET = clean
+
+# i want install and test rules to be run
+DEB_ANT_INSTALL_TARGET = jar javadoc
+DEB_ANT_CHECK_TARGET = test
+
+get-orig-source:
+	bash debian/get_orig_source.sh

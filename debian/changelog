@@ -1,0 +1,11 @@
+dumbster (1.6+debian-2) unstable; urgency=low
+
+  * Change dependency to default-jdk (Closes: #643511)
+
+ -- Stefan Denker <Stefan+Debian@dn-kr.de>  Wed, 28 Sep 2011 19:13:57 +0200
+
+dumbster (1.6+debian-1) unstable; urgency=low
+
+  * Initial release 
+
+ -- Stefan Denker <Stefan+Debian@dn-kr.de>  Sat, 25 Jun 2011 15:17:08 +0200

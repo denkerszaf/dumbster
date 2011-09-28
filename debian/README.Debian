@@ -1,0 +1,9 @@
+dumbster for Debian
+-------------------
+
+  * The .jar files resides under /usr/share/java/dumbster.jar. 
+    you also need to add gnumail.jar, gnumail-providers.jar and inetlib.jar
+    to your classpath for dumbster to work. Alternativly, you could use
+    oracles javamail project (non-free).
+
+ -- Stefan Denker <thinker@dn-kr.de>  Sat, 25 Jun 2011 15:17:08 +0200

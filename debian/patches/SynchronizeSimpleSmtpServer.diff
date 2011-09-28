@@ -1,0 +1,16 @@
+--- a/src/com/dumbster/smtp/SimpleSmtpServer.java
++++ b/src/com/dumbster/smtp/SimpleSmtpServer.java
+@@ -252,11 +252,11 @@
+   public static SimpleSmtpServer start(int port) {
+     SimpleSmtpServer server = new SimpleSmtpServer(port);
+     Thread t = new Thread(server);
+-    t.start();
+     
+-    // Block until the server socket is created
+     synchronized (server) {
++    	t.start();
+       try {
++    	  // Block until the server socket is created
+         server.wait();
+       } catch (InterruptedException e) {
+         // Ignore don't care.

@@ -1,0 +1,8 @@
+# See uscan(1) for format
+
+# Compulsory line, this is a version 3 file
+version=3
+
+opts=dversionmangle=s/\+debian$// \
+ http://sf.net/dumbster/dumbster(.*)-all.zip
+

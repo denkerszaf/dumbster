@@ -1,0 +1,9 @@
+dumbster for Debian
+-------------------
+
+The dumbster project on sourceforge releases binary and Source together in
+one package. I've repackaged the source into a tar.gz file. The automated
+repackaging process can be accessed via 
+ 
+  "debian/rules get_orig_source" 
+

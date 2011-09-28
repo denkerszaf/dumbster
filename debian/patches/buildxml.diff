@@ -1,0 +1,90 @@
+Index: trunk/build.xml
+===================================================================
+--- trunk.orig/build.xml	2011-07-30 14:07:24.000000000 +0200
++++ trunk/build.xml	2011-07-30 14:11:02.000000000 +0200
+@@ -20,14 +20,17 @@
+ <project name="dumbster" default="world">
+ 
+   <!-- === project configuration ========================================== -->
++
++  <property environment="env" />
++  <property name="jardir" value="${env.DESTDIR}/usr/share/java" />
+   <property name="release" value="1.6"/>
+   <property name="srcdir" value="src" />
+   <property name="etcdir" value="etc" />
+   <property name="builddir" value="build" />
+-  <property name="docdir" value="doc" />
++  <property name="docdir" value="${env.DESTDIR}/usr/share/doc/libdumbster-java/api" />
+   <property name="stagedir" value="${builddir}/stage" />
+   <property name="compiledir" value="${builddir}/classes" />
+-  <property name="libdir" value="lib" />
++  <property name="libdir" value="/usr/share/java/" />
+   <property name="testsrcdir" value="test-src" />
+   <property name="testcompiledir" value="${builddir}/test" />
+   <property name="debug" value="" />
+@@ -35,12 +38,24 @@
+   <property name="build.compiler" value="modern" />
+ 
+   <path id="compile.path">
+-    <fileset dir="${libdir}">
+-      <include name="**/*.jar" />
++    <fileset dir="/usr/share/java/">
++      <include name="gnumail.jar" />
++	<include name="gnumail-providers.jar" />
++	<include name="inetlib.jar" />
++	<include name="junit.jar" />
++	<include name="ant-junit.jar" />
+     </fileset>
+     <pathelement location="${compiledir}" />
+   </path>
+ 
++  <path id="jar.classpath" >
++    <fileset dir="/usr/share/java/">
++      <include name="gnumail.jar" />
++	<include name="gnumail-providers.jar" />
++	<include name="inetlib.jar" />
++    </fileset>
++  </path>
++
+   <!-- === world ========================================================== -->
+ 
+   <target name="world" depends="jar, test" />
+@@ -58,7 +73,11 @@
+ 
+   <target name="jar" depends="compile">
+     <delete file="${builddir}/dumbster.jar"/>
+-    <jar jarfile="${builddir}/dumbster.jar" basedir="${compiledir}/" />
++    <jar jarfile="${jardir}/dumbster.jar" basedir="${compiledir}/" >
++	<manifest>
++		<attribute name="Class-Path" value="${jar.classpath}"/>
++	</manifest>
++    </jar>
+   </target>
+ 
+   <!-- === clean ========================================================== -->
+@@ -90,12 +109,16 @@
+       <classpath>
+         <pathelement path="${testcompiledir}" />
+ 	      <pathelement path="${compiledir}" />
+-        <fileset dir="${libdir}">
++        <fileset dir="/usr/share/java/">
+           <include name="**/*.jar" />
++	  <include name="junit.jar" />
+         </fileset>
+       </classpath>
+       <formatter type="plain"/>
+-      <test name="com.dumbster.smtp.AllTests" />
++<!--      <test name="com.dumbster.smtp.AllTests" /> -->
++	<test name="com.dumbster.smtp.SimpleSmtpServerTest" />
++	<test name="com.dumbster.smtp.SmtpRequestTest" />
++	<test name="com.dumbster.smtp.BindProblemTest" />
+     </junit>
+   </target>
+ 
+@@ -114,4 +137,4 @@
+       <zipfileset dir="." includes="build/dumbster.jar" fullpath="dumbster${release}.jar"/>
+     </zip>
+   </target>
+-</project>
+\ No newline at end of file
++</project>

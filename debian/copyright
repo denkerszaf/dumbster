@@ -1,0 +1,28 @@
+This work was packaged for Debian by:
+
+    Stefan Denker <Stefan@dn-kr.de> on Sat, 25 Jun 2011 15:17:08 +0200
+
+It was downloaded from:
+
+    http://downloads.sourceforge.net/project/dumbster/
+	
+Upstream Author:
+
+    Jason Kitchen <consultancy@quintanasoft.com>
+
+Copyright:
+
+    Copyright (C) 2003-2011 Jason Kitchen
+
+License:
+
+    Apache License 2.0, 
+    see "/usr/share/common-licenses/Apache-2.0"
+
+The Debian packaging is:
+
+    Copyright (C) 2011 Stefan Denker <Stefan@dn-kr.de>
+
+and is licensed under the Apache License 2.0,
+see "/usr/share/common-licenses/Apache-2.0".
+
